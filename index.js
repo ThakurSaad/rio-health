@@ -24,6 +24,11 @@ const server = http.createServer((req, res) => {
   const foundProject = findProjectById(customParam1);
 
   try {
+    if (req.url === "/") {
+      res.writeHead(200);
+      return res.end("App is running");
+    }
+
     if (customParam0 !== "projects") {
       const errorMsg = stringify({ status: 404, message: "NOT FOUND" });
 
